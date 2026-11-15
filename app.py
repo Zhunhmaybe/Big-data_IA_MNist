@@ -126,10 +126,16 @@ h1, h2 { color: #5BC0BE !important; }
 h3, h4 { color: #769DBE !important; }
 section[data-testid="stSidebar"] { background: linear-gradient(180deg, #0B4F79 0%, #212529 100%); border-right: 2px solid #3E9B94; }
 .stTabs [data-baseweb="tab-list"] { gap: 6px; }
-.stTabs [data-baseweb="tab"] { background-color: #5B7C99; color: #FFFFFF; border-radius: 8px 8px 0 0; padding: 8px 14px; }
-.stTabs [aria-selected="true"] { background-color: #3E9B94 !important; }
-.stButton > button { background-color: #3E9B94; color: #FFFFFF; border: none; border-radius: 8px; }
-.stButton > button:hover { background-color: #CE7E79; color: #FFFFFF; }
+.stTabs [data-baseweb="tab"] { background-color: #5B7C99 !important; border-radius: 8px 8px 0 0; padding: 8px 14px; }
+.stTabs [data-baseweb="tab"] p, .stTabs [data-baseweb="tab"] * { color: #FFFFFF !important; font-weight: 600; }
+.stTabs [aria-selected="true"] { background-color: #0B4F79 !important; border-bottom: 3px solid #5BC0BE !important; }
+.stTabs [aria-selected="true"] p { color: #5BC0BE !important; }
+.stTabs [data-baseweb="tab-highlight"] { background-color: #5BC0BE !important; }
+.stButton > button { background-color: #3E9B94 !important; border: none; border-radius: 8px; }
+.stButton > button, .stButton > button * { color: #FFFFFF !important; font-weight: 600; }
+.stButton > button:hover { background-color: #CE7E79 !important; }
+/* Iconos de la barra del canvas visibles sobre fondo oscuro */
+iframe[title*="st_canvas"], iframe[title*="drawable"] { background: #E9F1F7; border-radius: 6px; }
 div[data-testid="stAlert"] { border-left: 5px solid #5BC0BE; }
 hr { border-color: #3E9B94 !important; }
 </style>
