@@ -1,0 +1,10 @@
+[theme]
+base = "dark"
+primaryColor = "#5BC0BE"              # Turquesa: botones, sliders, tabs activas
+backgroundColor = "#212529"           # Grafito: fondo principal
+secondaryBackgroundColor = "#0B4F79"  # Petróleo: sidebar, inputs
+textColor = "#E9F1F7"
+font = "sans serif"
+
+[server]
+headless = true

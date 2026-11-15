@@ -1,4 +1,4 @@
-"""
+﻿"""
 Aplicacion Web Avanzada para Clasificacion de Digitos MNIST
 Materia: Big Data - Unidad 2 (Deep Learning) - UTN
 Profesor: Ing. Ivan Garcia S., PhD
@@ -120,7 +120,24 @@ def center_and_normalize_digit(image: Image.Image, invert_if_light=True) -> tupl
     return tensor, final_img
 
 
+GLOBAL_CSS = """
+<style>
+h1, h2 { color: #5BC0BE !important; }
+h3, h4 { color: #769DBE !important; }
+section[data-testid="stSidebar"] { background: linear-gradient(180deg, #0B4F79 0%, #212529 100%); border-right: 2px solid #3E9B94; }
+.stTabs [data-baseweb="tab-list"] { gap: 6px; }
+.stTabs [data-baseweb="tab"] { background-color: #5B7C99; color: #FFFFFF; border-radius: 8px 8px 0 0; padding: 8px 14px; }
+.stTabs [aria-selected="true"] { background-color: #3E9B94 !important; }
+.stButton > button { background-color: #3E9B94; color: #FFFFFF; border: none; border-radius: 8px; }
+.stButton > button:hover { background-color: #CE7E79; color: #FFFFFF; }
+div[data-testid="stAlert"] { border-left: 5px solid #5BC0BE; }
+hr { border-color: #3E9B94 !important; }
+</style>
+"""
+
+
 def main():
+    st.markdown(GLOBAL_CSS, unsafe_allow_html=True)
     st.title("🔢 Clasificador Inteligente de Dígitos MNIST")
     st.markdown("""
     **Materia:** Big Data — *Unidad 2: Deep Learning (Convoluciones y Regularización)*  
@@ -236,7 +253,7 @@ def main():
         }
         div[data-testid="stCameraInput"] video {
             border-radius: 10px;
-            border: 2px solid #3b82f6;
+            border: 2px solid #5BC0BE;
             max-height: 240px !important;
             object-fit: cover;
         }
@@ -279,7 +296,7 @@ def main():
                 annotated_img = raw_cam_img.copy()
                 draw = ImageDraw.Draw(annotated_img)
                 # Borde verde visible con esquinas de enfoque
-                draw.rectangle([x1, y1, x2, y2], outline="#22c55e", width=4)
+                draw.rectangle([x1, y1, x2, y2], outline="#5BC0BE", width=4)
                 
                 # Recortar unicamente la region central de interes (ROI)
                 cropped_roi = raw_cam_img.crop((x1, y1, x2, y2))
@@ -364,17 +381,17 @@ def main():
             confidence = float(preds[predicted_digit]) * 100.0
 
             st.markdown(f"""
-            <div style="background-color: #0f172a; padding: 18px; border-radius: 12px; border-left: 6px solid #3b82f6;">
-                <h3 style="color: #94a3b8; margin: 0; font-size: 16px;">DÍGITO PREDICHO</h3>
-                <h1 style="color: #60a5fa; margin: 5px 0 0 0; font-size: 54px; font-weight: bold;">{predicted_digit}</h1>
-                <p style="color: #cbd5e1; margin: 6px 0 0 0;">Confianza: <b>{confidence:.2f}%</b> &nbsp;|&nbsp; Latencia: <b>{lat_ms:.2f} ms</b></p>
+            <div style="background: linear-gradient(135deg, #0B4F79 0%, #212529 100%); padding: 18px; border-radius: 12px; border-left: 6px solid #CE7E79;">
+                <h3 style="color: #769DBE; margin: 0; font-size: 16px; letter-spacing: 2px;">DÍGITO PREDICHO</h3>
+                <h1 style="color: #5BC0BE; margin: 5px 0 0 0; font-size: 54px; font-weight: bold;">{predicted_digit}</h1>
+                <p style="color: #E9F1F7; margin: 6px 0 0 0;">Confianza: <b>{confidence:.2f}%</b> &nbsp;|&nbsp; Latencia: <b>{lat_ms:.2f} ms</b></p>
             </div>
             """, unsafe_allow_html=True)
 
         # Grafico de barras de distribucion
         st.markdown("#### Probabilidad para cada Dígito (0 al 9):")
         prob_dict = {f"Dígito {i}": float(preds[i] * 100) for i in range(10)}
-        st.bar_chart(prob_dict)
+        st.bar_chart(prob_dict, color="#5BC0BE")
 
     elif active_model is None:
         st.error("Por favor entrena los modelos antes de probar la inferencia.")
@@ -383,7 +400,7 @@ def main():
 
     st.markdown("---")
     st.markdown("""
-    <div style="text-align: center; color: #64748b; font-size: 12px;">
+    <div style="text-align: center; color: #5B7C99; font-size: 12px;">
         Desarrollado para la materia Big Data - Universidad Técnica del Norte (UTN) | Modelos: LeNet-5 y CNN Moderna
     </div>
     """, unsafe_allow_html=True)
